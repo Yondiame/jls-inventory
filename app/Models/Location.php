@@ -19,7 +19,7 @@ class Location extends Model implements AuthenticatableContract, AuthorizableCon
      * @var array
      */
     protected $fillable = [
-        'location',
+        'location', 'warehouse_id'
     ];
 
     public function warehouse (): \Illuminate\Database\Eloquent\Relations\BelongsTo

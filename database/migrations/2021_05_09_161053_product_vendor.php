@@ -15,12 +15,13 @@ class ProductVendor extends Migration
     {
         Schema::create('product_vendor', function (Blueprint $table) {
             $table->id();
-            $table->string('vendors_sku');
-            $table->string('vendors_order_unit');
-            $table->string('vendors_case_pack');
+            $table->string('vendor_sku')->nullable();
+            $table->string('vendors_title')->nullable();
+            $table->string('vendor_order_unit')->nullable();
+            $table->string('vendor_case_pack')->nullable();
             $table->foreignId('vendor_id')->constrained();
             $table->foreignId('product_id')->constrained();
-            $table->tinyInteger('back_up');
+            $table->tinyInteger('backup')->default(0);
             $table->timestamps();
         });
     }

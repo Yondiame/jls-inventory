@@ -19,7 +19,7 @@ class Vendor extends Model implements AuthenticatableContract, AuthorizableContr
      * @var array
      */
     protected $fillable = [
-        'vendor', 'vendor_title',
+        'vendor',
     ];
 
 

@@ -19,7 +19,7 @@ class Tag extends Model implements AuthenticatableContract, AuthorizableContract
      * @var array
      */
     protected $fillable = [
-        'tag',
+        'tag', 'id'
     ];
 
 

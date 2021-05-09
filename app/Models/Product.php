@@ -30,7 +30,7 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
         'case_pack_pieces',
         'pieces_per_internal_box',
         'boxes_per_case',
-        'tags_and_info',
+        'tags_info',
         'hazmat',
         'active',
         'ignore_until',

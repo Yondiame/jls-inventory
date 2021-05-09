@@ -21,6 +21,6 @@ class ProductVendor extends Model implements AuthenticatableContract, Authorizab
      * @var array
      */
     protected $fillable = [
-        'vendors_case_pack', 'back_up', 'vendors_order_unit',  'vendors_sku', 'product_id', 'vendor_id'
+        'vendors_case_pack', 'backup', 'vendors_order_unit',  'vendors_sku', 'product_id', 'vendor_id', 'vendors_title'
     ];
 }

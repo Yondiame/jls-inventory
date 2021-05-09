@@ -16,21 +16,21 @@ class Products extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('core_number');
-            $table->string('internal_title');
-            $table->string('restockable');
-            $table->string('moq_pieces');
-            $table->integer('buffer_days');
-            $table->integer('minimum_level');
-            $table->text('product_url');
-            $table->text('note_for_next_order');
-            $table->string('case_pack_pieces');
-            $table->string('pieces_per_internal_box');
-            $table->string('boxes_per_case');
-            $table->string('tags_and_info');
-            $table->string('hazmat');
-            $table->string('active');
-            $table->string('ignore_until');
-            $table->text('notes');
+            $table->string('internal_title')->nullable();
+            $table->string('restockable')->nullable();
+            $table->string('moq_pieces')->nullable();
+            $table->integer('buffer_days')->nullable();
+            $table->string('minimum_level')->nullable();
+            $table->text('product_url')->nullable();
+            $table->text('note_for_next_order')->nullable();
+            $table->string('case_pack_pieces')->nullable();
+            $table->string('pieces_per_internal_box')->nullable();
+            $table->string('boxes_per_case')->nullable();
+            $table->string('tags_info')->nullable();
+            $table->string('hazmat')->nullable();
+            $table->string('active')->nullable();
+            $table->string('ignore_until')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

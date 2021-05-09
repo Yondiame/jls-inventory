@@ -16,7 +16,6 @@ class Vendors extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->string('vendor');
-            $table->string('vendors_title');
             $table->timestamps();
         });
     }

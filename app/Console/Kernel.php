@@ -14,6 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        'App\Console\Commands\LoadProducts',
+        'App\Console\Commands\LoadLocations',
     ];
 
     /**

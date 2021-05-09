@@ -15,7 +15,7 @@ class LocationProduct extends Migration
     {
         Schema::create('location_product', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('quantity');
+            $table->unsignedBigInteger('quantity')->nullable();
             $table->foreignId('location_id')->constrained();
             $table->foreignId('product_id')->constrained();
             $table->timestamps();
