@@ -9,10 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Vendor extends Model implements AuthenticatableContract, AuthorizableContract
+class Vendor extends Model
 {
-    use Authenticatable, Authorizable, HasFactory;
-
     /**
      * The attributes that are mass assignable.
      *

@@ -16,3 +16,9 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+$router->get('product/{id}', 'ProductController@show');
+$router->get('products', 'ProductController@index');
+$router->put('products', 'ProductController@update');
+$router->get('search', 'ProductController@search');

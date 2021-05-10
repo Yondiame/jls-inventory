@@ -10,9 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Location;
 
-class Warehouse extends Model implements AuthenticatableContract, AuthorizableContract
+class Warehouse extends Model
 {
-    use Authenticatable, Authorizable, HasFactory;
 
     /**
      * The attributes that are mass assignable.

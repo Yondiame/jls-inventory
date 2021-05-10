@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Product extends Model implements AuthenticatableContract, AuthorizableContract
+class Product extends Model
 {
-    use Authenticatable, Authorizable, HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -39,7 +38,12 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
 
     public function vendors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Vendor::class);
+        return $this->belongsToMany(Vendor::class)->withPivot('vendors_case_pack', 'backup', 'vendors_order_unit',  'vendors_sku', 'vendors_title')->wherePivot('backup', 0);
+    }
+
+    public function backUpVendors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Vendor::class)->withPivot('vendors_case_pack', 'backup', 'vendors_order_unit',  'vendors_sku', 'vendors_title')->wherePivot('backup', 1);
     }
 
     public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -49,6 +53,6 @@ class Product extends Model implements AuthenticatableContract, AuthorizableCont
 
     public function locations(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Location::class);
+        return $this->belongsToMany(Location::class)->withPivot('quantity');
     }
 }
