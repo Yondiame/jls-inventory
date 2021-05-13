@@ -21,41 +21,54 @@ class ProductController extends Controller
     }
 
 
-    public function index() {
-        return response()->json(
-            [
-                'data' => Product::paginate(20),
-                'success' => true
-            ]
-        );
-    }
+//    public function index() {
+//        return response()->json(
+//            [
+//                'data' => Product::paginate(20),
+//                'success' => true
+//            ]
+//        );
+//    }
 
-    public function search(Request $request) {
+    public function index(Request $request) {
         $search = trim($request->input('search'));
         return response()->json(
             [
-                'data' => Product::where('core_number', 'LIKE' , "%$search%")->paginate(20),
+                'data' => $products =  Product::where('core_number', 'LIKE' , "%$search%")->select('id', 'core_number', 'internal_title', 'moq_pieces', 'active')->paginate(20),
                 'success' => true
             ]
         );
     }
 
     public function show($id) {
+
         return response()->json(
             [
-                'data' => Product::with('vendors', 'backUpVendors', 'locations', 'tags')->find($id)->first(),
+                'data' => Product::where('id',$id)->with('vendors', 'tags', 'locations.warehouse')->first(),
                 'success' => true
             ]
         );
     }
 
-    public function update (Request $request) {
-        $product = Product::find($request->input('id'));
-        $location_id = $request->input('location_id');
-        $old_quantity = (int) $product->locations()->where('location_id', $location_id)->value('quantity');
-        $product->syncWithoutDetaching([$location_id => ((int) $request->input('quantity')) + $old_quantity]);
+
+    public function edit($id) {
         return response()->json(
             [
+                'data' => Product::with ('locations')->where('id',$id)->select('id', 'core_number', 'internal_title')->first(),
+                'success' => true
+            ]
+        );
+    }
+
+    public function update (Request $request, $id) {
+        $product = Product::find($id);
+        $location_id = $request->input('location_id');
+        $location = $product->locations();
+        $old_quantity = (int) $location->where('location_id', $location_id)->value('quantity');
+        $location->syncWithoutDetaching([$location_id => [ 'quantity' => ((int) $request->input('quantity')) + $old_quantity]]);
+        return response()->json(
+            [
+                'message' => 'Update was completed successfuly',
                 'success' => true
             ]
         );

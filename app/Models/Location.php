@@ -25,4 +25,9 @@ class Location extends Model
     {
         return $this->belongsTo(Warehouse::class);
     }
+
+    public function products (): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

@@ -21,6 +21,6 @@ class ProductVendor extends Pivot
      * @var array
      */
     protected $fillable = [
-        'vendors_case_pack', 'backup', 'vendors_order_unit',  'vendors_sku', 'product_id', 'vendor_id', 'vendors_title'
+        'vendor_case_pack', 'backup', 'vendor_order_unit',  'vendor_sku', 'product_id', 'vendor_id', 'vendors_title'
     ];
 }

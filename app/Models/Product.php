@@ -38,13 +38,14 @@ class Product extends Model
 
     public function vendors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Vendor::class)->withPivot('vendors_case_pack', 'backup', 'vendors_order_unit',  'vendors_sku', 'vendors_title')->wherePivot('backup', 0);
+        return $this->belongsToMany(Vendor::class)->withPivot('vendor_case_pack', 'backup', 'vendor_order_unit',  'vendor_sku', 'vendors_title');
+//            ->wherePivot('backup', 0);
     }
 
-    public function backUpVendors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(Vendor::class)->withPivot('vendors_case_pack', 'backup', 'vendors_order_unit',  'vendors_sku', 'vendors_title')->wherePivot('backup', 1);
-    }
+//    public function backUpVendors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+//    {
+//        return $this->belongsToMany(Vendor::class)->withPivot('vendor_case_pack', 'backup', 'vendor_order_unit',  'vendor_sku', 'vendors_title')->wherePivot('backup', 1);
+//    }
 
     public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
