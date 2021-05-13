@@ -13,9 +13,9 @@
 |
 */
 
-//$router->get('/', function () use ($router) {
-//    return $router->app->version();
-//});
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+});
 
 $router->group(['middleware' => 'cors'], function () use ($router) {
     //All the routes you want to allow CORS for
